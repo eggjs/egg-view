@@ -42,6 +42,8 @@ exports.view = {
 
 ## Use a template engine
 
+[egg-view] don't have build-in view engine, So you should choose a template engine like [ejs], and install [egg-view-ejs] plugin.
+
 You can choose a template engine first, link [ejs], so we use [egg-view-ejs] plugin.
 
 `egg-view` is in [eggjs], so you just need configure [egg-view-ejs].
@@ -159,12 +161,19 @@ class MyView {
 };
 ```
 
-The method receive three arguments, `renderString` will pass tpl as the first argument instead of name in `render`.
+These methods receive three arguments, `renderString` will pass tpl as the first argument instead of name in `render`.
+
+`render(name, locals, viewOptions)`
 
 - name: the file path that can resolve from root (`app/view` by default)
 - locals: data used by template
-- config: the view config for every render, it can override the view default config. so plugin should implement it if it has config.
+- viewOptions: the view options for each render, it can override the view default config in `config/config.default.js`. Plugin should implement it if it has config.
+
+`renderString(tpl, locals, viewOptions)`
+
 - tpl: the template string instead of the file, using in `renderString`
+- locals: same as `render`
+- viewOptions: same as `render`
 
 ### Register
 
