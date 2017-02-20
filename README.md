@@ -22,7 +22,7 @@
 
 Base view plugin for egg
 
-**It's a buildin plugin in [eggjs]**
+**it's a plugin that has been built-in for egg.**
 
 ## Install
 
@@ -266,3 +266,8 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 [MIT](LICENSE)
 
 [eggjs]: https://eggjs.org
+[ejs]: https://github.com/mde/ejs
+[egg-view-ejs]: https://github.com/eggjs/egg-view-ejs
+[egg-view]: https://github.com/eggjs/egg-view
+[nunjucks]: http://mozilla.github.io/nunjucks
+[egg-view-nunjucks]: https://github.com/eggjs/egg-view-nunjucks
