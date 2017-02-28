@@ -4,6 +4,7 @@ const assert = require('assert');
 const path = require('path');
 const request = require('supertest');
 const mock = require('egg-mock');
+const fs = require('mz/fs');
 const fixtures = path.join(__dirname, 'fixtures');
 
 
@@ -276,6 +277,56 @@ describe('test/view.test.js', () => {
         .get('/render-string')
         .expect('ejs')
         .expect(200);
+    });
+  });
+
+  describe('cache enable', () => {
+    let app;
+    const viewPath = path.join(__dirname, 'fixtures/apps/cache/app/view1/home.nj');
+    before(() => {
+      app = mock.app({
+        baseDir: 'apps/cache',
+      });
+      return app.ready();
+    });
+    after(() => app.close());
+    after(() => fs.writeFile(viewPath, 'a\n'));
+
+    it('should cache', function* () {
+      let res = yield request(app.callback())
+        .get('/');
+      assert(res.text === viewPath);
+
+      yield fs.unlink(viewPath);
+      res = yield request(app.callback())
+        .get('/');
+      assert(res.text === viewPath);
+    });
+  });
+
+  describe('cache disable', () => {
+    let app;
+    const viewPath1 = path.join(__dirname, 'fixtures/apps/cache/app/view1/home.nj');
+    const viewPath2 = path.join(__dirname, 'fixtures/apps/cache/app/view2/home.nj');
+    before(() => {
+      mock.env('local');
+      app = mock.app({
+        baseDir: 'apps/cache',
+      });
+      return app.ready();
+    });
+    after(() => app.close());
+    after(() => fs.writeFile(viewPath1, ''));
+
+    it('should cache', function* () {
+      let res = yield request(app.callback())
+        .get('/');
+      assert(res.text === viewPath1);
+
+      yield fs.unlink(viewPath1);
+      res = yield request(app.callback())
+        .get('/');
+      assert(res.text === viewPath2);
     });
   });
 });
