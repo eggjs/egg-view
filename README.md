@@ -59,6 +59,7 @@ exports.ejs = {
 Configure the mapping, the file with `.ejs` extension will be rendered by ejs.
 
 ```js
+// config/config.default.js
 exports.view = {
   mapping: {
     '.ejs': 'ejs',
@@ -103,6 +104,7 @@ If you want add another template engine like [nunjucks], then you can add [egg-v
 Configure the plugin and mapping
 
 ```js
+// config/config.default.js
 exports.view = {
   mapping: {
     '.ejs': 'ejs',
