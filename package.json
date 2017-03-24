@@ -17,12 +17,12 @@
     "mz": "^2.6.0"
   },
   "devDependencies": {
-    "autod": "^2.7.1",
-    "egg": "^1.0.0-rc.1",
-    "egg-bin": "^2.2.3",
-    "egg-ci": "^1.2.0",
-    "egg-mock": "^3.0.1",
-    "eslint": "^3.16.1",
+    "autod": "^2.8.0",
+    "egg": "^1.0.0",
+    "egg-bin": "^3.1.0",
+    "egg-ci": "^1.6.0",
+    "egg-mock": "^3.2.0",
+    "eslint": "^3.18.0",
     "eslint-config-egg": "^3.2.0",
     "mz-modules": "^1.0.0",
     "supertest": "^3.0.0",
@@ -32,17 +32,18 @@
     "node": ">=6.0.0"
   },
   "scripts": {
+    "autod": "autod",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "pkgfiles": "egg-bin pkgfiles"
   },
   "files": [
-    "config",
     "app",
-    "lib"
+    "lib",
+    "config"
   ],
   "ci": {
     "version": "6, 7"

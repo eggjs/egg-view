@@ -8,4 +8,7 @@ module.exports = {
       '.ejs': 'ejs',
     },
   },
+
+  keys: '123',
+
 };
