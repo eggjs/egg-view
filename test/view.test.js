@@ -342,12 +342,22 @@ describe('test/view.test.js', () => {
     after(() => app.close());
 
     it('should return name and root', function* () {
-      const res = yield request(app.callback())
+      let res = yield request(app.callback())
         .get('/');
+
       assert.deepEqual(res.body, {
         fullpath: path.join(baseDir, 'app/view/sub/a.html'),
         root: path.join(baseDir, 'app/view'),
         name: 'sub/a.html',
+      });
+
+      res = yield request(app.callback())
+        .get('/absolute');
+
+      assert.deepEqual(res.body, {
+        fullpath: path.join(baseDir, 'app/view/sub/a.html'),
+        root: path.join(baseDir, 'app/view'),
+        name: '/sub/a.html',
       });
     });
   });
