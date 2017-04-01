@@ -329,4 +329,36 @@ describe('test/view.test.js', () => {
       assert(res.text === viewPath2);
     });
   });
+
+  describe('options.root', () => {
+    let app;
+    const baseDir = path.join(fixtures, 'apps/options-root');
+    before(() => {
+      app = mock.app({
+        baseDir: 'apps/options-root',
+      });
+      return app.ready();
+    });
+    after(() => app.close());
+
+    it('should return name and root', function* () {
+      let res = yield request(app.callback())
+        .get('/');
+
+      assert.deepEqual(res.body, {
+        fullpath: path.join(baseDir, 'app/view/sub/a.html'),
+        root: path.join(baseDir, 'app/view'),
+        name: 'sub/a.html',
+      });
+
+      res = yield request(app.callback())
+        .get('/absolute');
+
+      assert.deepEqual(res.body, {
+        fullpath: path.join(baseDir, 'app/view/sub/a.html'),
+        root: path.join(baseDir, 'app/view'),
+        name: '/sub/a.html',
+      });
+    });
+  });
 });

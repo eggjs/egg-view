@@ -170,6 +170,9 @@ These methods receive three arguments, `renderString` will pass tpl as the first
 - name: the file path that can resolve from root (`app/view` by default)
 - locals: data used by template
 - viewOptions: the view options for each render, it can override the view default config in `config/config.default.js`. Plugin should implement it if it has config.
+  When you implement view engine, you will receive this options from `render`, the options contain:
+  - root: egg-view will resolve the name to full path, but seperating root and name in viewOptions.
+  - name: the original name when call render
 
 `renderString(tpl, locals, viewOptions)`
 
