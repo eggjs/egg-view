@@ -269,7 +269,7 @@ exports.view = {
 };
 ```
 
-see [config/config.default.js](config/config.default.js) for more detail.
+see [config/config.default.js](https://github.com/eggjs/egg-view/blob/master/config/config.default.js) for more detail.
 
 ## Questions & Suggestions
 
@@ -277,7 +277,8 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://github.com/eggjs/egg-view/blob/master/LICENSE)
+
 
 [eggjs]: https://eggjs.org
 [ejs]: https://github.com/mde/ejs
