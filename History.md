@@ -1,4 +1,9 @@
 
+1.1.2 / 2017-07-14
+==================
+
+  * fix: should skip file when file path out of view path (#7)
+
 1.1.1 / 2017-06-04
 ==================
 
