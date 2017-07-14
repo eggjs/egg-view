@@ -169,14 +169,14 @@ describe('test/view.test.js', () => {
         yield request(app.callback())
           .get('/render-ext-without-config')
           .expect(500)
-          .expect(/Can&#39;t find viewEngine for /);
+          .expect(/Can\'t find viewEngine for /);
       });
 
       it('should throw when render file without viewEngine', function* () {
         yield request(app.callback())
           .get('/render-without-view-engine')
           .expect(500)
-          .expect(/Can&#39;t find ViewEngine &quot;html&quot;/);
+          .expect(/Can\'t find ViewEngine "html"/);
       });
 
       it('should load file from multiple root', function* () {
@@ -203,7 +203,7 @@ describe('test/view.test.js', () => {
       it('should load file that do not exist', function* () {
         yield request(app.callback())
           .get('/load-file-noexist')
-          .expect(/Can&#39;t find noexist.ejs from/)
+          .expect(/Can\'t find noexist.ejs from/)
           .expect(500);
       });
     });
@@ -359,6 +359,24 @@ describe('test/view.test.js', () => {
         root: path.join(baseDir, 'app/view'),
         name: '/sub/a.html',
       });
+    });
+  });
+
+  describe('out of view path', () => {
+    let app;
+    before(() => {
+      app = mock.app({
+        baseDir: 'apps/out-of-path',
+      });
+      return app.ready();
+    });
+    after(() => app.close());
+
+    it('should 500 when filename out of path', function* () {
+      yield request(app.callback())
+        .get('/render')
+        .expect(500)
+        .expect(/Can't find \.\.\/a\.html/);
     });
   });
 });
