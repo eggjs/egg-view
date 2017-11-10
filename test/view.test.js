@@ -2,7 +2,6 @@
 
 const assert = require('assert');
 const path = require('path');
-const request = require('supertest');
 const mock = require('egg-mock');
 const fs = require('mz/fs');
 const fixtures = path.join(__dirname, 'fixtures');
@@ -74,7 +73,7 @@ describe('test/view.test.js', () => {
 
     describe('render', () => {
       it('should render ejs', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/render-ejs')
           .expect(200);
 
@@ -85,7 +84,7 @@ describe('test/view.test.js', () => {
       });
 
       it('should render nunjucks', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/render-nunjucks')
           .expect(200);
 
@@ -96,7 +95,7 @@ describe('test/view.test.js', () => {
       });
 
       it('should render with options.viewEngine', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/render-with-options')
           .expect(200);
 
@@ -107,7 +106,7 @@ describe('test/view.test.js', () => {
 
     describe('renderString', () => {
       it('should renderString', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/render-string')
           .expect(200);
         assert(res.body.tpl === 'hello world');
@@ -117,13 +116,13 @@ describe('test/view.test.js', () => {
       });
 
       it('should throw when no viewEngine', function* () {
-        yield request(app.callback())
+        yield app.httpRequest()
           .get('/render-string-without-view-engine')
           .expect(500);
       });
 
       it('should renderString twice', function* () {
-        yield request(app.callback())
+        yield app.httpRequest()
           .get('/render-string-twice')
           .expect('a,b')
           .expect(200);
@@ -133,7 +132,7 @@ describe('test/view.test.js', () => {
 
     describe('locals', () => {
       it('should render with locals', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/render-locals')
           .expect(200);
         const locals = res.body.locals;
@@ -145,7 +144,7 @@ describe('test/view.test.js', () => {
       });
 
       it('should renderString with locals', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/render-string-locals')
           .expect(200);
         const locals = res.body.locals;
@@ -159,49 +158,49 @@ describe('test/view.test.js', () => {
 
     describe('resolve', () => {
       it('should loader without extension', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/render-without-ext')
           .expect(200);
         assert(res.body.filename === path.join(baseDir, 'app/view/loader/a.ejs'));
       });
 
       it('should throw when render file that extension is not configured', function* () {
-        yield request(app.callback())
+        yield app.httpRequest()
           .get('/render-ext-without-config')
           .expect(500)
           .expect(/Can\'t find viewEngine for /);
       });
 
       it('should throw when render file without viewEngine', function* () {
-        yield request(app.callback())
+        yield app.httpRequest()
           .get('/render-without-view-engine')
           .expect(500)
           .expect(/Can\'t find ViewEngine "html"/);
       });
 
       it('should load file from multiple root', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/render-multiple-root')
           .expect(200);
         assert(res.body.filename === path.join(baseDir, 'app/view2/loader/from-view2.ejs'));
       });
 
       it('should load file from multiple root when without extension', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/render-multiple-root-without-extenstion')
           .expect(200);
         assert(res.body.filename === path.join(baseDir, 'app/view2/loader/from-view2.ejs'));
       });
 
       it('should render load "name" before "name + defaultExtension" in multiple root', function* () {
-        const res = yield request(app.callback())
+        const res = yield app.httpRequest()
           .get('/load-same-file')
           .expect(200);
         assert(res.body.filename === path.join(baseDir, 'app/view2/loader/a.nj'));
       });
 
       it('should load file that do not exist', function* () {
-        yield request(app.callback())
+        yield app.httpRequest()
           .get('/load-file-noexist')
           .expect(/Can\'t find noexist.ejs from/)
           .expect(500);
@@ -236,7 +235,7 @@ describe('test/view.test.js', () => {
     after(() => app.close());
 
     it('should render', function* () {
-      const res = yield request(app.callback())
+      const res = yield app.httpRequest()
         .get('/render-async')
         .expect(200);
 
@@ -245,7 +244,7 @@ describe('test/view.test.js', () => {
     });
 
     it('should renderString', function* () {
-      const res = yield request(app.callback())
+      const res = yield app.httpRequest()
         .get('/render-string-async')
         .expect(200);
 
@@ -266,14 +265,14 @@ describe('test/view.test.js', () => {
     after(() => app.close());
 
     it('should render without viewEngine', function* () {
-      yield request(app.callback())
+      yield app.httpRequest()
         .get('/render')
         .expect('ejs')
         .expect(200);
     });
 
     it('should renderString without viewEngine', function* () {
-      yield request(app.callback())
+      yield app.httpRequest()
         .get('/render-string')
         .expect('ejs')
         .expect(200);
@@ -293,12 +292,12 @@ describe('test/view.test.js', () => {
     after(() => fs.writeFile(viewPath, 'a\n'));
 
     it('should cache', function* () {
-      let res = yield request(app.callback())
+      let res = yield app.httpRequest()
         .get('/');
       assert(res.text === viewPath);
 
       yield fs.unlink(viewPath);
-      res = yield request(app.callback())
+      res = yield app.httpRequest()
         .get('/');
       assert(res.text === viewPath);
     });
@@ -319,12 +318,12 @@ describe('test/view.test.js', () => {
     after(() => fs.writeFile(viewPath1, ''));
 
     it('should cache', function* () {
-      let res = yield request(app.callback())
+      let res = yield app.httpRequest()
         .get('/');
       assert(res.text === viewPath1);
 
       yield fs.unlink(viewPath1);
-      res = yield request(app.callback())
+      res = yield app.httpRequest()
         .get('/');
       assert(res.text === viewPath2);
     });
@@ -342,7 +341,7 @@ describe('test/view.test.js', () => {
     after(() => app.close());
 
     it('should return name and root', function* () {
-      let res = yield request(app.callback())
+      let res = yield app.httpRequest()
         .get('/');
 
       assert.deepEqual(res.body, {
@@ -351,7 +350,7 @@ describe('test/view.test.js', () => {
         name: 'sub/a.html',
       });
 
-      res = yield request(app.callback())
+      res = yield app.httpRequest()
         .get('/absolute');
 
       assert.deepEqual(res.body, {
@@ -373,7 +372,7 @@ describe('test/view.test.js', () => {
     after(() => app.close());
 
     it('should 500 when filename out of path', function* () {
-      yield request(app.callback())
+      yield app.httpRequest()
         .get('/render')
         .expect(500)
         .expect(/Can't find \.\.\/a\.html/);
