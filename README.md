@@ -72,9 +72,9 @@ In controller, you can call `ctx.render`.
 ```js
 module.exports = app => {
   return class UserController extends app.Controller {
-    * list() {
+    async list() {
       const { ctx } = this;
-      yield ctx.render('user.ejs');
+      await ctx.render('user.ejs');
     }
   };
 };
@@ -85,9 +85,9 @@ If you call `ctx.renderString`, you should specify viewEngine in viewOptions.
 ```js
 module.exports = app => {
   return class UserController extends app.Controller {
-    * list() {
+    async list() {
       const { ctx } = this;
-      ctx.body = yield ctx.renderString('<%= user %>', { user: 'popomore' }, {
+      ctx.body = await ctx.renderString('<%= user %>', { user: 'popomore' }, {
         viewEngine: 'ejs',
       });
     }
@@ -116,7 +116,7 @@ exports.view = {
 You can simply render the file with `.nj` extension.
 
 ```js
-yield ctx.render('user.nj');
+await ctx.render('user.nj');
 ```
 
 ## How to write a view plugin
@@ -135,11 +135,11 @@ module.exports = class MyView {
     // get the plugin config from `ctx.app.config`
   }
 
-  * render(fullpath, locals) {
+  async render(fullpath, locals) {
     return myengine.render(fullpath, locals);
   }
 
-  * renderString() { throw new Error('not implement'); }
+  async renderString() { throw new Error('not implement'); }
 };
 ```
 
@@ -247,10 +247,10 @@ exports.view = {
 // controller
 module.exports = app => {
   return class UserController extends app.Controller {
-    * list() {
+    async list() {
       const { ctx } = this;
       // render user.html
-      yield ctx.render('user');
+      await ctx.render('user');
     }
   };
 };

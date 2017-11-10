@@ -13,23 +13,22 @@
     "view"
   ],
   "dependencies": {
-    "co": "^4.6.0",
-    "mz": "^2.6.0"
+    "mz": "^2.7.0"
   },
   "devDependencies": {
-    "autod": "^2.8.0",
-    "egg": "^1.0.0",
-    "egg-bin": "^3.1.0",
-    "egg-ci": "^1.6.0",
-    "egg-mock": "^3.2.0",
-    "eslint": "^3.18.0",
-    "eslint-config-egg": "^3.2.0",
+    "autod": "^2.10.1",
+    "egg": "next",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.13.1",
+    "eslint": "^4.10.0",
+    "eslint-config-egg": "^5.1.1",
     "mz-modules": "^1.0.0",
     "supertest": "^3.0.0",
-    "webstorm-disable-index": "^1.1.2"
+    "webstorm-disable-index": "^1.2.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "scripts": {
     "autod": "autod",
@@ -46,7 +45,7 @@
     "config"
   ],
   "ci": {
-    "version": "6, 7"
+    "version": "8, 9"
   },
   "repository": {
     "type": "git",
