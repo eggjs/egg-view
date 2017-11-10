@@ -1,4 +1,10 @@
 
+2.0.0 / 2017-11-10
+==================
+
+**others**
+  * [[`d660e14`](http://github.com/eggjs/egg-view/commit/d660e1494a637296f0e1ba13c40c3d20401dad78)] -  refactor: use async function and support egg@2 (#8) (Yiyu He <<dead_horse@qq.com>>)
+
 1.1.2 / 2017-07-14
 ==================
 
