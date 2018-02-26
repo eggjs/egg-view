@@ -55,6 +55,14 @@ exports.renderLocals = ctx => {
   return ctx.render('ext/a.ejs', { b: 2 });
 };
 
+exports.renderOriginalLocals = ctx => {
+  ctx.locals = {
+    a: 1,
+    b: 1,
+  };
+  return ctx.render('ext/a.ejs', { b: 2 });
+};
+
 exports.renderStringLocals = ctx => {
   ctx.locals = {
     a: 1,

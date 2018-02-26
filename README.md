@@ -173,6 +173,7 @@ These methods receive three arguments, `renderString` will pass tpl as the first
   When you implement view engine, you will receive this options from `render`, the options contain:
   - root: egg-view will resolve the name to full path, but seperating root and name in viewOptions.
   - name: the original name when call render
+  - locals: the original locals when call render
 
 `renderString(tpl, locals, viewOptions)`
 
