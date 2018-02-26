@@ -154,6 +154,18 @@ describe('test/view.test.js', () => {
         assert(locals.request);
         assert(locals.helper);
       });
+
+      it('should render with original locals', function* () {
+        const res = yield app.httpRequest()
+          .get('/render-original-locals')
+          .expect(200);
+        const locals = res.body.originalLocals;
+        assert(!locals.a);
+        assert(locals.b === 2);
+        assert(!locals.ctx);
+        assert(!locals.request);
+        assert(!locals.helper);
+      });
     });
 
     describe('resolve', () => {

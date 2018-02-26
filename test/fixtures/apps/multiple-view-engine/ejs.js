@@ -10,6 +10,7 @@ class EjsView {
       locals,
       options,
       type: 'ejs',
+      originalLocals: options.locals,
     };
   }
 
