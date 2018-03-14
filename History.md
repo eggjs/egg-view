@@ -1,4 +1,10 @@
 
+1.2.0 / 2018-03-14
+==================
+
+**features**
+  * [[`16fb65c`](http://github.com/eggjs/egg-view/commit/16fb65c489301c6cd6508c229a677cfb417d17b5)] - feat: export original locals to view engine (#9) (#10) (Haoliang Gao <<sakura9515@gmail.com>>)
+
 1.1.2 / 2017-07-14
 ==================
 

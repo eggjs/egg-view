@@ -1,6 +1,6 @@
 {
   "name": "egg-view",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Base view plugin for egg",
   "eggPlugin": {
     "name": "view"
@@ -57,5 +57,8 @@
   },
   "homepage": "https://github.com/eggjs/egg-view#readme",
   "author": "popomore <sakura9515@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "tag": "release-1.x"
+  }
 }
