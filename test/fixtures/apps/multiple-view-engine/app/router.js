@@ -17,6 +17,7 @@ module.exports = app => {
   app.get('/render-locals', 'view.renderLocals');
   app.get('/render-string-locals', 'view.renderStringLocals');
   app.get('/render-string-twice', 'view.renderStringTwice');
+  app.get('/render-original-locals', 'view.renderOriginalLocals');
 
   app.get('/render-async', 'view.renderAsync');
   app.get('/render-string-async', 'view.renderStringAsync');
