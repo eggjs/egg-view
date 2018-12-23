@@ -17,13 +17,15 @@
   },
   "devDependencies": {
     "autod": "^2.10.1",
-    "egg": "next",
+    "coffee": "^5.2.0",
+    "egg": "^2.14.2",
     "egg-bin": "^4.3.5",
     "egg-ci": "^1.8.0",
     "egg-mock": "^3.13.1",
     "eslint": "^4.10.0",
     "eslint-config-egg": "^5.1.1",
     "mz-modules": "^1.0.0",
+    "typescript": "^3.2.2",
     "webstorm-disable-index": "^1.2.0"
   },
   "engines": {
@@ -41,8 +43,10 @@
   "files": [
     "app",
     "lib",
+    "index.d.ts",
     "config"
   ],
+  "types": "index.d.ts",
   "ci": {
     "version": "8, 9"
   },
