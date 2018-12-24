@@ -9,4 +9,8 @@ export default class HomeController extends Controller {
       test: '123'
     });
   }
+
+  async other() {
+    this.ctx.body = await this.ctx.renderString('./test.tpl');
+  }
 }
