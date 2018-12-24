@@ -37,8 +37,10 @@ declare module "egg" {
     view: ViewManager;
   }
 
-  interface Context extends ViewBase {
+  interface Context {
     view: ContextView;
+    render(name: string, locals?: any, options?: any): Promise<string>;
+    renderString(name: string, locals?: any, options?: any): Promise<string>;
   }
 
   interface EggAppConfig {
