@@ -1,5 +1,12 @@
 import { Application, Context, PlainObject } from "egg";
 
+interface RenderOptions extends PlainObject {
+  name?: string;
+  root?: string;
+  locals?: PlainObject;
+  viewEngine?: ViewBase;
+}
+
 declare class ViewBase {
   /**
    * Render a file by view engine
@@ -8,7 +15,7 @@ declare class ViewBase {
    * @param {Object} [options] - view options, you can use `options.viewEngine` to specify view engine
    * @return {Promise<String>} result - return a promise with a render result
    */
-  render(name: string, locals?: any, options?: any): Promise<string>;
+  render(name: string, locals?: any, options?: RenderOptions): Promise<string>;
 
   /**
    * Render a template string by view engine
@@ -17,7 +24,7 @@ declare class ViewBase {
    * @param {Object} [options] - view options, you can use `options.viewEngine` to specify view engine
    * @return {Promise<String>} result - return a promise with a render result
    */
-  renderString(name: string, locals?: any, options?: any): Promise<string>;
+  renderString(name: string, locals?: any, options?: RenderOptions): Promise<string>;
 }
 
 declare class ViewManager extends Map<string, any> {
@@ -39,8 +46,8 @@ declare module "egg" {
 
   interface Context {
     view: ContextView;
-    render(name: string, locals?: any, options?: any): Promise<string>;
-    renderString(name: string, locals?: any, options?: any): Promise<string>;
+    render(name: string, locals?: any, options?: RenderOptions): Promise<string>;
+    renderString(name: string, locals?: any, options?: RenderOptions): Promise<string>;
   }
 
   interface EggAppConfig {
