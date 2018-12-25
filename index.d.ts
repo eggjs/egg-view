@@ -1,4 +1,4 @@
-import { Application, Context, PlainObject } from "egg";
+import { Application, Context, PlainObject } from 'egg';
 
 interface RenderOptions extends PlainObject {
   name?: string;
@@ -39,7 +39,7 @@ declare class ContextView extends ViewBase {
   constructor(ctx: Context);
 }
 
-declare module "egg" {
+declare module 'egg' {
   interface Application {
     view: ViewManager;
   }
