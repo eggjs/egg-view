@@ -4,7 +4,7 @@ interface RenderOptions extends PlainObject {
   name?: string;
   root?: string;
   locals?: PlainObject;
-  viewEngine?: ViewBase;
+  viewEngine?: string;
 }
 
 declare class ViewBase {
