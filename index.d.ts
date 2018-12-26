@@ -45,6 +45,9 @@ declare module 'egg' {
   }
 
   interface Context {
+    /**
+     * View instance that is created every request
+     */
     view: ContextView;
 
     /**
