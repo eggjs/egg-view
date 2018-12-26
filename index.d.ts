@@ -7,7 +7,7 @@ interface RenderOptions extends PlainObject {
   viewEngine?: string;
 }
 
-declare class ViewBase {
+interface ViewBase {
   /**
    * Render a file by view engine
    * @param {String} name - the file path based on root
@@ -27,13 +27,13 @@ declare class ViewBase {
   renderString(name: string, locals?: any, options?: RenderOptions): Promise<string>;
 }
 
-declare class ViewManager extends Map<string, any> {
+interface ViewManager extends Map<string, any> {
   constructor(app: Application);
   use(name: string, viewEngine: ViewBase): void;
   resolve(name: string): Promise<string>;
 }
 
-declare class ContextView extends ViewBase {
+interface ContextView extends ViewBase {
   app: Application;
   viewManager: ViewManager;
   constructor(ctx: Context);
@@ -46,7 +46,23 @@ declare module 'egg' {
 
   interface Context {
     view: ContextView;
+
+    /**
+     * Render a file by view engine
+     * @param {String} name - the file path based on root
+     * @param {Object} [locals] - data used by template
+     * @param {Object} [options] - view options, you can use `options.viewEngine` to specify view engine
+     * @return {Promise<String>} result - return a promise with a render result
+     */
     render(name: string, locals?: any, options?: RenderOptions): Promise<string>;
+
+    /**
+     * Render a template string by view engine
+     * @param {String} tpl - template string
+     * @param {Object} [locals] - data used by template
+     * @param {Object} [options] - view options, you can use `options.viewEngine` to specify view engine
+     * @return {Promise<String>} result - return a promise with a render result
+     */
     renderString(name: string, locals?: any, options?: RenderOptions): Promise<string>;
   }
 

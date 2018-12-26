@@ -20,7 +20,7 @@
     "coffee": "^5.2.0",
     "egg": "^2.14.2",
     "egg-bin": "^4.3.5",
-    "egg-ci": "^1.8.0",
+    "egg-ci": "^1.11.0",
     "egg-mock": "^3.13.1",
     "eslint": "^4.10.0",
     "eslint-config-egg": "^5.1.1",
@@ -48,7 +48,7 @@
   ],
   "types": "index.d.ts",
   "ci": {
-    "version": "8, 9"
+    "version": "8, 10, 11"
   },
   "repository": {
     "type": "git",
