@@ -5,7 +5,7 @@ const path = require('path');
 const mock = require('egg-mock');
 const fs = require('mz/fs');
 const fixtures = path.join(__dirname, 'fixtures');
-
+const coffee = require('coffee');
 
 describe('test/view.test.js', () => {
   afterEach(mock.restore);
@@ -388,6 +388,18 @@ describe('test/view.test.js', () => {
         .get('/render')
         .expect(500)
         .expect(/Can't find \.\.\/a\.html/);
+    });
+  });
+
+  describe('typescript', () => {
+    it('should compile ts without error', () => {
+      return coffee.fork(
+        require.resolve('typescript/bin/tsc'),
+        [ '-p', path.resolve(__dirname, './fixtures/apps/ts/tsconfig.json') ]
+      )
+        .debug()
+        .expect('code', 0)
+        .end();
     });
   });
 });
