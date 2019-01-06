@@ -1,4 +1,4 @@
-import { Application, Context, PlainObject } from 'egg';
+import { Application, PlainObject } from 'egg';
 
 interface RenderOptions extends PlainObject {
   name?: string;
