@@ -28,7 +28,6 @@ interface ViewBase {
 }
 
 interface ViewManager extends Map<string, any> {
-  constructor(app: Application);
   use(name: string, viewEngine: ViewBase): void;
   resolve(name: string): Promise<string>;
 }
@@ -36,7 +35,6 @@ interface ViewManager extends Map<string, any> {
 interface ContextView extends ViewBase {
   app: Application;
   viewManager: ViewManager;
-  constructor(ctx: Context);
 }
 
 declare module 'egg' {
