@@ -16,6 +16,7 @@
     "mz": "^2.7.0"
   },
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "autod": "^2.10.1",
     "coffee": "^5.2.0",
     "egg": "^2.14.2",
