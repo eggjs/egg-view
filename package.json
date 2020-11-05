@@ -1,6 +1,6 @@
 {
   "name": "egg-view",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Base view plugin for egg",
   "eggPlugin": {
     "name": "view"

@@ -1,4 +1,13 @@
 
+2.1.3 / 2020-11-05
+==================
+
+**fixes**
+  * [[`e535d56`](http://github.com/eggjs/egg-view/commit/e535d561425c9a5ed1d1d2fd5b23c120ab4a4626)] - fix: added renderView declaration in dts file (#15) (serializedowen <<wjh199455@gmail.com>>)
+
+**others**
+  * [[`3633535`](http://github.com/eggjs/egg-view/commit/3633535469d04a8aa0f985126f95281d4fedd09d)] - chore: update travis (TZ | 天猪 <<atian25@qq.com>>)
+
 2.1.2 / 2019-01-30
 ==================
 
