@@ -7,3 +7,7 @@ run/
 .DS_Store
 *.swp
 test/fixtures/apps/ts/**/*.js
+*-lock.json
+*-lock.yaml
+test/fixtures/ts/**/*.js
+test/fixtures/ts/**/*.d.ts
