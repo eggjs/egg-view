@@ -24,8 +24,8 @@
     "egg-bin": "^5.1.0",
     "egg-ci": "^1",
     "egg-mock": "^4.2.1",
-    "eslint": "^8.17.0",
-    "eslint-config-egg": "^12.0.0",
+    "eslint": "^4",
+    "eslint-config-egg": "5",
     "mz-modules": "^1.0.0",
     "typescript": "^4.7.3"
   },
