@@ -8,6 +8,7 @@ module.exports = {
 
   /**
    * Render a file, then set to body, the parameter is same as {@link @ContextView#render}
+   * @param {...any} args arguments
    * @return {Promise} result
    */
   render(...args) {
@@ -18,6 +19,7 @@ module.exports = {
 
   /**
    * Render a file, same as {@link @ContextView#render}
+   * @param {...any} args arguments
    * @return {Promise} result
    */
   renderView(...args) {
@@ -26,6 +28,7 @@ module.exports = {
 
   /**
    * Render template string, same as {@link @ContextView#renderString}
+   * @param {...any} args arguments
    * @return {Promise} result
    */
   renderString(...args) {
