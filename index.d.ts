@@ -1,4 +1,6 @@
-import { Application, PlainObject } from 'egg';
+import { Application} from 'egg';
+
+type PlainObject<T = any> = { [key: string]: T };
 
 interface RenderOptions extends PlainObject {
   name?: string;
