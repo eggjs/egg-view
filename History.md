@@ -1,4 +1,14 @@
 
+2.1.4 / 2023-02-03
+==================
+
+**fixes**
+  * [[`8a723fe`](http://github.com/eggjs/egg-view/commit/8a723fe96b3632eafac7f62734500255126a46b3)] - fix: not import PlainObject from egg (#18) (killa <<killa123@126.com>>)
+
+**others**
+  * [[`10a233f`](http://github.com/eggjs/egg-view/commit/10a233f78cff9fef9c244c1fbc72e2a7d72784d3)] - docs: update readme (#17) (TZ | 天猪 <<atian25@qq.com>>)
+  * [[`c8f3c43`](http://github.com/eggjs/egg-view/commit/c8f3c43ab199d74d7f0145a37ff6b2529580c519)] - deps: update deps && ci (#16) (TZ | 天猪 <<atian25@qq.com>>)
+
 2.1.3 / 2020-11-05
 ==================
 
